@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bayu Gilang Permana — Front-End Developer</title>
+  <meta name="description" content="Portfolio Bayu — Front-End Developer. Projects, skills, resume & contact." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+ <style>
+:root {
+  --bg-start: #0f172a;
+  --bg-mid: #1e1b4b;
+  --bg-end: #312e81;
+  --accent: #4f46e5;
+  --accent-glow: #6366f1;
+  --muted: #9ca3af;
+  --card: rgba(255, 255, 255, 0.06);
+  --radius: 16px;
+  --maxw: 1100px;
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+/* === Layout & Background === */
+body {
+  margin: 0;
+  background: linear-gradient(160deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+  color: #e0e7ff;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* === Smooth Scroll === */
+html {
+  scroll-behavior: smooth;
+}
+
+/* === Global Style === */
+* {
+  box-sizing: border-box;
+  transition: all 0.35s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* === Header === */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(79, 70, 229, 0.2);
+  margin-top: 18px;
+  position: sticky;
+  top: 0;
+  z-index: 5000;
+  max-width: var(--maxw);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.site-name {
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 0 0 12px var(--accent-glow);
+}
+
+nav ul {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+nav a:hover,
+nav a.active {
+  color: #fff;
+  background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+
+/* === Hero === */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 40px;
+  align-items: center;
+  padding: 80px 16px;
+}
+
+.hero-left h1 {
+  font-size: 42px;
+  margin: 0 0 12px;
+  background: linear-gradient(90deg, #a5b4fc, #c084fc, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+/* ✅ Perbaikan agar tombol rata tengah */
+.cta {
+  display: flex;
+  justify-content: center; /* <-- ini menengahkannya */
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 15px var(--accent-glow);
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px var(--accent-glow);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #c7d2fe;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-glow);
+}
+
+/* === Responsive hero untuk mobile === */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 50px 16px;
+  }
+
+  /* ✅ Pastikan tombol tetap di tengah di mobile */
+  .cta {
+    justify-content: center;
+    margin-top: 16px;
+  }
+}
+
+
+/* === Card & Section === */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 0 25px rgba(79, 70, 229, 0.15);
+  padding: 20px;
+}
+
+section {
+  padding: 60px 0;
+}
+
+.section-title h2 {
+  text-align: center;
+  color: #c7d2fe;
+  text-shadow: 0 0 10px var(--accent-glow);
+  font-size: 1.8em;
+  margin-bottom: 30px;
+}
+
+/* === Projects === */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  justify-content: center;
+  gap: 22px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background-color: #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.project-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 16px;
+  background-color: #38bdf8;
+  color: #0f172a;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.project-link:hover {
+  background-color: #0ea5e9;
+  color: #fff;
+}
+
+/* === Skills === */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.skill {
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.3), rgba(147, 197, 253, 0.1));
+  color: #c7d2fe;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+/* === Contact === */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: #fff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 12px var(--accent-glow);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* === Footer === */
+/* === Footer === */
+footer {
+  background: linear-gradient(180deg, #0f172a, #1e1b4b);
+  color: #cbd5e1;
+  text-align: center;
+  padding: 60px 20px;
+  box-shadow: inset 0 0 30px rgba(79, 70, 229, 0.2);
+}
+
+footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+footer h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #a5b4fc;
+}
+
+footer p,
+footer li {
+  font-size: 14px;
+  color: #e2e8f0;
+  margin: 4px 0;
+}
+
+footer a {
+  color: #a5b4fc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* === Sosial Media === */
+footer .socials {
+  margin-top: 20px;
+}
+
+footer .socials a {
+  margin: 0 10px;
+  font-size: 24px;
+  color: #e6eef8;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+footer .socials a:hover {
+  color: #6366f1;
+  transform: scale(1.1);
+}
+
+/* === Responsive Footer === */
+@media (max-width: 768px) {
+  footer .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+  }
+
+  footer .container > div {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    padding: 18px 12px;
+    width: 90%;
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.15);
+  }
+
+  footer h3 {
+    color: #c7d2fe;
+    font-size: 15px;
+  }
+
+  footer li {
+    list-style: none;
+  }
+
+  footer hr {
+    width: 80%;
+    margin: 30px auto;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  footer .socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+}
+
+/* === Menu Button === */
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* === MOBILE (max 900px) === */
+@media (max-width: 900px) {
+  .menu-btn {
+    display: block;
+    font-size: 26px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: rgba(79, 70, 229, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    z-index: 5001;
+  }
+
+  header {
+    margin: 0;
+    border-radius: 0;
+    padding: 10px 16px;
+    width: 100%;
+    z-index: 5000;
+  }
+
+  /* === MENU NAV MOBILE === */
+  nav ul {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 75%;
+    max-width: 300px;
+
+    /* 🌟 efek kaca blur modern */
+    background: rgba(0, 0, 0, 0.288);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 80px 20px 20px;
+    gap: 16px;
+    box-shadow: -2px 0 25px rgba(79, 70, 229, 0.35);
+    border-left: 1px solid rgba(79, 70, 229, 0.25);
+
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.35s ease;
+  }
+
+  nav ul.show {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  nav a {
+    color: #e0e7ff;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 10px;
+    padding: 12px 14px;
+    transition: all 0.2s ease;
+  }
+
+  nav a:hover,
+  nav a:active {
+    background: linear-gradient(90deg, rgba(99, 102, 241, 0.8), rgba(79, 70, 229, 0.8));
+    color: #fff;
+    transform: translateX(4px);
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.6);
+  }
+
+  nav a.active {
+    background: rgba(99, 102, 241, 0.9);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.7);
+  }
+
+  .site-name {
+    font-size: 16px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 50px 16px;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    width: 90%;
+  }
+}
+
+.hero,
+section {
+  position: relative;
+  z-index: 1;
+}
+
+.menu-btn.active i {
+  transform: rotate(90deg);
+}
+/* === Placeholder Contact Form (Tebal & Terlihat Jelas) === */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #c7d2fe;          /* warna lembut tapi masih kontras */
+  font-weight: 600;        /* menebalkan teks placeholder */
+  opacity: 1;              /* pastikan placeholder tidak transparan */
+  letter-spacing: 0.5px;   /* sedikit spasi biar lebih elegan */
+}
+/* === ANIMASI MASUK (LOAD DAN SCROLL) === */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === ANIMASI MASUK SAAT PAGE LOAD === */
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  animation: fadeInPage 1s ease-out;
+}
+
+/* === TAMBAHAN: animasi halus pada hero background === */
+.hero {
+  background: radial-gradient(circle at center, rgba(79,70,229,0.2) 0%, transparent 70%);
+  animation: bgFloat 10s ease-in-out infinite alternate;
+}
+
+@keyframes bgFloat {
+  0% { background-position: 50% 50%; }
+  100% { background-position: 70% 40%; }
+}
+/* === STARFIELD BACKGROUND === */
+#starfield {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* pastikan tetap di belakang semua elemen */
+  background: radial-gradient(circle at bottom, #000010 0%, #020024 100%);
+  pointer-events: none; /* biar tidak menghalangi klik */
+}
+
+
+
+</style>
+
+</head>
+<body>
+  <canvas id="starfield"></canvas>
+  <div class="container fade-up">
+   <header>
+  <div class="brand">
+    <div class="logo">
+      <img src="1754916990020.jpg" alt="Foto Bayu" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+    </div>
+    <div>
+      <div class="site-name">Bayu Gilang Permana</div>
+      <div class="small">Front-End Developer | DBA | Data Analyst</div>
+    </div>
+  </div>
+
+  <!-- 🔹 Tombol hamburger baru -->
+  <button class="menu-btn" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+
+  <nav>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <a href="CV. Bayu Gilang permana...pdf" download style="color:#4cc9f0; font-weight:700;">
+          Download CV
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-left fade-up">
+          <h1>Hi, I'm Bayu, <br> Junior Front-End Developer <br>& DBA</h1>
+          <p class="tagline">I craft interactive and visually appealing websites with a focus on performance and experience.</p>
+          <div class="cta">
+            <a href="#projects" class="btn">See my work</a>
+            <a href="#contact" class="btn btn-outline">Hire me</a>
+          </div>
+        </div>
+        <aside class="card fade-up" style="animation-delay:0.4s">
+          <h3>Contact</h3>
+          <p class="small">Email: <a href="mailto:bayugilang305@gmail.com">bayugilang305@gmail.com</a></p>
+          <p class="small">Location: West Java | Indonesia</p>
+        </aside>
+      </section>
+
+      <section id="about" class="fade-up" style="text-align: center;">
+  <div class="section-title" style="display: flex; justify-content: center; align-items: center;">
+    <h1 style="text-align: center; font-weight: bold; font-size: 2em; margin-bottom: 20px;">
+      <p><b>About Me</b></p>
+    </h1>
+  </div>
+
+  <div class="card" 
+       style="max-width: 900px; 
+              margin: 0 auto; 
+              text-align: center; 
+              line-height: 1.8; 
+              font-weight: bold; 
+              font-size: 16px;">
+    <p>
+      <h2>
+        I’m Bayu Gilang Permana, a Front-End Developer passionate about creating modern, responsive, and user-centered web experiences.
+With a background in Manajemen Informatika from Politeknik LP3I Jakarta, I focus on writing clean, efficient code and designing intuitive interfaces.
+Skilled in HTML, CSS, JavaScript, and React, I’m a proactive learner who thrives in both independent and collaborative environments.
+      </h2>
+    </p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-title">
+    <h2>My Projects</h2>
+  </div>
+  <div class="projects">
+    
+    <div class="project-card">
+      <img src="download1.jpg" alt="Project A" class="project-img">
+      <h3>System Pemantauan Applikasi</h3>
+      <p></p>
+      <a href="https://contoh-link-projectA.com" target="_blank" class="project-link">
+        View Project
+      </a>
+    </div>
+
+    <div class="project-card">
+      <img src="download2.jpg" alt="Project B" class="project-img">
+      <h3>System Visualisasi Data Keuangan</h3>
+      <p></p>
+      <a href="https://contoh-link-projectB.com" target="_blank" class="project-link">
+        View Project
+      </a>
+    </div>
+
+    <div class="project-card">
+      <img src="download3.jpg" alt="Project C" class="project-img">
+      <h3>System Pemantauan Karyawan</h3>
+      <p></p>
+      <a href="https://contoh-link-projectC.com" target="_blank" class="project-link">
+        View Project
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
+      <section id="certificates" class="fade-up" style="padding:60px 0;">
+        <div style="display:flex;justify-content:center;align-items:center;width:100%;margin-bottom:40px;">
+          <h2 style="font-size:2.2em;color:white;text-align:center;letter-spacing:1px;font-weight:600;margin:0;">My Certificates Appreciation</h2>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:60px;max-width:1200px;margin:0 auto;">
+            <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:40px;width:100%;">
+              <img src="BNSP - Database Administrator.jpg" style="width:200px;border-radius:10px;box-shadow:0 0 12px rgba(255,255,255,0.3);">
+              <img src="BNSP - Junior Web Programmer.jpg" style="width:200px;border-radius:10px;box-shadow:0 0 12px rgba(255,255,255,0.3);">
+              <img src="BNSP - Tenaga Operator Komputer.jpg" style="width:200px;border-radius:10px;box-shadow:0 0 12px rgba(255,255,255,0.3);">
+            </div>
+            <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:50px;width:100%;">
+              <img src="Coursera - Meta FrontEnd Developer.jpg" style="width:380px;border-radius:10px;box-shadow:0 0 12px rgba(255,255,255,0.3);">
+              <img src="Coursera - Google UX Design.jpg" style="width:380px;border-radius:10px;box-shadow:0 0 12px rgba(255,255,255,0.3);">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="fade-up">
+        <div class="section-title"><h2>Skill & Programming Language</h2></div>
+        <div class="card">
+          <div class="skills-grid">
+            <div class="skill">Phyton</div><div class="skill">JavaScript</div><div class="skill">PHP</div><div class="skill">MySQL</div><div class="skill">Java</div><div class="skill">Excel Formula</div><div class="skill">Postgre</div><div class="skill">Tailwind</div><div class="skill">Laravel</div><div class="skill">Data Visualization</div><div class="skill">Ads Digital Marketing</div><div class="skill">Git&GitHub</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="fade-up">
+        <div class="section-title"><h2>Contact Me</h2></div>
+        <div class="card">
+          <form action="https://formspree.io/f/mldpygaw" method="POST" class="contact-form">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Your email" required />
+            <textarea name="message" rows="5" placeholder="Your message..." required></textarea>
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer style="background-color:#0b1221; padding:60px 20px 30px; color:#e6eef8;">
+  <div class="container" 
+       style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; max-width:1100px; margin:0 auto;">
+
+    <div style="flex:1; min-width:260px;">
+      <h2 style="margin:0 0 10px; font-size:20px; font-weight:700;"></h2>
+      <h3 style="font-size:16px; font-weight:600; margin-bottom:10px;">Contact Me :</h3>
+      <p style="margin:4px 0;">Email : bayugilang305@gmail.com</p>
+      <l>
+      <p style="margin:4px 0;">Address : Cijambe Rt.005/Rw.003</p>
+      <p style="margin:4px 0;">Kelurahan Sukadami, Kecamatan Cikarang Selatan</p>
+      <p style="margin:4px 0;">Kabupaten Bekasi, Jawa Barat</p>
+    </div>
+
+    <div style="flex:1; min-width:220px;">
+      <h3 style="font-size:16px; font-weight:600; margin-bottom:10px;">Certificates</h3>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li>Sertifikat Tenaga Operator Komputer (BNSP)</li>
+        <li>Sertifikat Database Administrator (BNSP)</li>
+        <li>Sertifikat Junior Web Programmer (BNSP)</li>
+        <li>Meta - Front-End Developer (Coursera)</li>
+        <li>Google - UX Design (Coursera)</li>
+      </ul>
+    </div>
+
+    <div style="flex:1; min-width:200px;">
+      <h3 style="font-size:16px; font-weight:600; margin-bottom:10px;">Links</h3>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li><a href="#home" style="color:#9aa6bd; text-decoration:none;">Home</a></li>
+        <li><a href="#about" style="color:#9aa6bd; text-decoration:none;">About</a></li>
+        <li><a href="#projects" style="color:#9aa6bd; text-decoration:none;">Portfolio</a></li>
+        <li><a href="#skills" style="color:#9aa6bd; text-decoration:none;">Skills</a></li>
+        <li><a href="#certificates" style="color:#9aa6bd; text-decoration:none;">Certificates</a></li>
+        <li><a href="#contact" style="color:#9aa6bd; text-decoration:none;">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr style="margin:40px auto; width:90%; border-color:rgba(255,255,255,0.1);">
+
+  <div style="text-align:center;">
+  <div style="margin-bottom:20px;">
+    <a href="https://www.linkedin.com/in/bayugilang204" target="_blank" 
+       style="margin:0 12px; color:#e6eef8; font-size:24px; text-decoration:none;">
+      <i class="fab fa-linkedin"></i>
+    </a>
+
+    <a href="https://github.com/BayuGilang24" target="_blank" 
+       style="margin:0 12px; color:#e6eef8; font-size:24px; text-decoration:none;">
+      <i class="fab fa-github"></i>
+    </a>
+
+    <a href="https://www.instagram.com/bayugilang_7?igsh=ZW04emd4M2poeXQy" target="_blank" 
+       style="margin:0 12px; color:#e6eef8; font-size:24px; text-decoration:none;">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+</div>
+
+    <p style="font-size:14px; color:#9aa6bd;">
+    </p>
+  </div>
+</footer>
+
+  </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  /* === SCROLL ANIMATION === */
+  const fadeElements = document.querySelectorAll(".fade-up, section");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    },
+    { threshold: 0.15 }
+  );
+  fadeElements.forEach((el) => observer.observe(el));
+  setTimeout(() => fadeElements.forEach((el) => el.classList.add("show")), 400);
+
+  /* === MENU HAMBURGER (PERBAIKAN JAVASCRIPT) === */
+  const menuBtn = document.querySelector(".menu-btn");
+  const navList = document.querySelector("nav ul");
+  const navLinks = document.querySelectorAll("nav ul li a");
+
+  // Toggle menu
+  menuBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navList.classList.toggle("show");
+    menuBtn.classList.toggle("active");
+  });
+
+  // Klik link → scroll ke section + tutup menu
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const targetId = link.getAttribute("href");
+      
+      if (targetId.startsWith("#")) {
+        e.preventDefault();
+        const target = document.querySelector(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+      
+      // Khusus untuk mobile: Tutup menu setelah jeda singkat
+      if (window.innerWidth <= 900) {
+        // Jeda 300ms memberi waktu browser untuk memproses klik link sebelum menu hilang
+        setTimeout(() => {
+            navList.classList.remove("show");
+            menuBtn.classList.remove("active");
+        }, 300); 
+      }
+    });
+  });
+
+  // Tutup menu kalau klik di luar area
+  document.addEventListener("click", (e) => {
+    if (
+      navList.classList.contains("show") &&
+      !navList.contains(e.target) &&
+      !menuBtn.contains(e.target)
+    ) {
+      navList.classList.remove("show");
+      menuBtn.classList.remove("active");
+    }
+  });
+
+  // Tampilkan tombol hamburger hanya di mobile
+  const handleResize = () => {
+    if (window.innerWidth > 900) {
+      // Desktop: pastikan menu selalu tampil dengan display: flex
+      navList.style.display = 'flex';
+      menuBtn.style.display = "none";
+      navList.classList.remove("show");
+    } else {
+      // Mobile: tombol hamburger tampil. Hapus display: none di navList di sini.
+      menuBtn.style.display = "block";
+      // Biarkan navList diatur oleh CSS (display: flex tetap ada, tapi visibility/opacity yang mengontrol)
+      // JANGAN SET navList.style.display di sini.
+    }
+  };
+  handleResize();
+  window.addEventListener("resize", handleResize);
+
+  /* === FORM KONTAK === */
+  const contactForm = document.querySelector(".contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) {
+          alert("✅ Terima kasih! Pesan Anda telah terkirim.");
+          form.reset();
+        } else throw new Error();
+      } catch {
+        alert("⚠️ Terjadi kesalahan, coba lagi.");
+      }
+    });
+  }
+});
+menuBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  navList.classList.toggle("show");
+  menuBtn.classList.toggle("active");
+
+  const icon = menuBtn.querySelector("i");
+  if (menuBtn.classList.contains("active")) {
+    icon.classList.replace("fa-bars", "fa-xmark");
+  } else {
+    icon.classList.replace("fa-xmark", "fa-bars");
+  }
+});
+// === OVERLAY GRADIENT SOLID TANPA TRANSPARANSI ===
+const overlay = document.createElement("div");
+overlay.style.position = "fixed";
+overlay.style.top = 0;
+overlay.style.left = 0;
+overlay.style.width = "100%";
+overlay.style.height = "100%";
+
+/* 🎨 Gradasi biru ke hitam solid (tanpa rgba) */
+overlay.style.background = "linear-gradient(160deg, #0f172a 0%, #1e3a8a 50%, #000000 100%)";
+
+/* Tidak transparan */
+overlay.style.opacity = 0;
+overlay.style.visibility = "hidden";
+overlay.style.transition = "opacity 0.35s ease, visibility 0.35s ease";
+overlay.style.zIndex = 4000;
+
+/* Pastikan tidak tembus sama sekali */
+overlay.style.backgroundColor = "#0f172a";
+
+document.body.appendChild(overlay);
+
+menuBtn.addEventListener("click", () => {
+  const isOpen = navList.classList.toggle("show");
+  menuBtn.classList.toggle("active");
+  overlay.style.opacity = isOpen ? 1 : 0;
+  overlay.style.visibility = isOpen ? "visible" : "hidden";
+});
+
+overlay.addEventListener("click", () => {
+  navList.classList.remove("show");
+  menuBtn.classList.remove("active");
+  overlay.style.opacity = 0;
+  overlay.style.visibility = "hidden";
+});
+// Animasi halus saat pertama kali halaman dibuka
+window.addEventListener("load", () => {
+  document.querySelectorAll(".fade-up").forEach((el, i) => {
+    setTimeout(() => el.classList.add("show"), i * 150);
+  });
+});
+const canvas = document.getElementById("starfield");
+const ctx = canvas.getContext("2d");
+let stars = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+// Membuat bintang-bintang
+for (let i = 0; i < 120; i++) {
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 1.5,
+    speed: 0.15 + Math.random() * 0.5,
+    alpha: 0.3 + Math.random() * 0.7
+  });
+}
+
+// Efek bergerak perlahan (parallax lembut)
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let star of stars) {
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(173, 216, 255, ${star.alpha})`;
+    ctx.fill();
+    star.y += star.speed;
+    if (star.y > canvas.height) {
+      star.y = 0;
+      star.x = Math.random() * canvas.width;
+    }
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+
+</script>
+</body>
+</html>
